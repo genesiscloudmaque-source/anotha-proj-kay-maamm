@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CBNHS-Springville Hymn</title>
+  <meta name="description"
+    content="Official hymn lyrics of CBNHS-Springville — City of Bacoor National High School, Springville Campus.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0c1020;
+      color: #e0e4ed;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* ===== HEADER ===== */
+    .header {
+      text-align: center;
+      padding: 80px 24px 48px;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #d4a843;
+      border: 1px solid rgba(212, 168, 67, 0.25);
+      border-radius: 50px;
+      padding: 6px 18px;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      background: linear-gradient(135deg, #d4a843, #f0d78c);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: rgba(224, 228, 237, 0.5);
+    }
+
+    .divider {
+      width: 50px;
+      height: 2px;
+      background: linear-gradient(135deg, #d4a843, #f0d78c);
+      border: none;
+      margin: 32px auto 0;
+    }
+
+    /* ===== LYRICS ===== */
+    .lyrics {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 40px 24px 100px;
+    }
+
+    .verse {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 16px;
+      padding: 36px 32px;
+      margin-bottom: 24px;
+      transition: border-color 0.3s, background 0.3s;
+    }
+
+    .verse:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(212, 168, 67, 0.15);
+    }
+
+    .verse.chorus {
+      background: rgba(212, 168, 67, 0.06);
+      border-color: rgba(212, 168, 67, 0.12);
+    }
+
+    .verse-tag {
+      display: inline-block;
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #d4a843;
+      background: rgba(212, 168, 67, 0.1);
+      padding: 3px 10px;
+      border-radius: 4px;
+      margin-bottom: 20px;
+    }
+
+    .verse-text {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1rem, 1.8vw, 1.15rem);
+      line-height: 2;
+      text-align: center;
+      color: #e0e4ed;
+    }
+
+    .verse.chorus .verse-text {
+      font-style: italic;
+      font-weight: 700;
+    }
+
+    /* ===== CLOSING ===== */
+    .closing {
+      text-align: center;
+      padding: 48px 32px;
+      margin-top: 8px;
+      border: 1px solid rgba(212, 168, 67, 0.15);
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(212, 168, 67, 0.06), rgba(74, 124, 202, 0.04));
+    }
+
+    .closing-text {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+      font-weight: 700;
+      line-height: 1.8;
+      background: linear-gradient(135deg, #d4a843, #f0d78c);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .closing-text.big {
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      margin-top: 8px;
+      letter-spacing: 2px;
+    }
+
+    /* ===== AUDIO PLAYER ===== */
+    .player {
+      position: fixed;
+      bottom: 16px;
+      right: 16px;
+      background: rgba(12, 16, 32, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 12px 16px;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      z-index: 100;
+    }
+
+    .player-label {
+      font-size: 0.65rem;
+      font-weight: 500;
+      color: #d4a843;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+
+    .player audio {
+      display: block;
+      width: 240px;
+      height: 36px;
+      border-radius: 8px;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      text-align: center;
+      padding: 40px 24px 80px;
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .footer p {
+      font-size: 0.72rem;
+      color: rgba(224, 228, 237, 0.3);
+      letter-spacing: 1px;
+    }
+
+    .footer .name {
+      font-weight: 500;
+      color: rgba(224, 228, 237, 0.5);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 640px) {
+      .verse {
+        padding: 28px 20px;
+      }
+
+      .closing {
+        padding: 36px 20px;
+      }
+
+      .player {
+        bottom: 12px;
+        right: 12px;
+        left: 12px;
+      }
+
+      .player audio {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="badge">Official School Hymn</div>
+    <h1>CBNHS-Springville</h1>
+    <p class="subtitle">Bukal ng Karunungan</p>
+    <hr class="divider">
+  </header>
+
+  <!-- Lyrics -->
+  <main class="lyrics">
+
+    <!-- Verse 1 -->
+    <div class="verse">
+      <div class="verse-tag">Verse I</div>
+      <div class="verse-text">
+        CBNHS-Springville, kami ay iyong akayin.<br>
+        Ituro ang daan tungo sa karunungan,<br>
+        Kami ay iyong ilawan sa landas ng aming buhay.<br>
+        Patapangin, patatagin upang karununga'y kamtin.
+      </div>
+    </div>
+
+    <!-- Chorus -->
+    <div class="verse chorus">
+      <div class="verse-tag">Chorus</div>
+      <div class="verse-text">
+        Mabuhay ka, Inang paaralan! Bukal ka ng karunungan.<br>
+        Talino mo'y dadalhin saan man makarating.<br>
+        Ginising mo ang aming diwa ng taglay mong karunungan.<br>
+        Kinalinga, inaruga ng pagmamahal mong tunay.
+      </div>
+    </div>
+
+    <!-- Verse 2 -->
+    <div class="verse">
+      <div class="verse-tag">Verse II</div>
+      <div class="verse-text">
+        Ang pag-akap mo sa amin kalian ma'y di lilimutin.<br>
+        Sa pagtahak sa dilim, ilaw mo'y gabay namin,<br>
+        Liwanag mo'y patuloy nawang magningning sa tulad namin.<br>
+        Ilaw mo, itapat upang landas maging dapat.
+      </div>
+    </div>
+
+    <!-- Chorus (Repeat) -->
+    <div class="verse chorus">
+      <div class="verse-tag">Chorus</div>
+      <div class="verse-text">
+        Mabuhay ka, Inang paaralan! Bukal ka ng karunungan.<br>
+        Talino mo'y dadalhin saan man makarating.<br>
+        Ginising mo ang aming diwa ng taglay mong karunungan.<br>
+        Kinalinga, inaruga ng pagmamahal mong tunay.
+      </div>
+    </div>
+
+    <!-- Closing -->
+    <div class="closing">
+      <div class="closing-text">
+        Mabuhay ka, CBNHS-Springville!<br>
+        Mabuhay ka, Mabuhay ka! Camellans
+      </div>
+      <div class="closing-text big">Mabuhay!</div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p><span class="name">City of Bacoor National High School — Springville</span></p>
+    <p style="margin-top: 6px;">Mabuhay, Camellans! </p>
+  </footer>
+
+  <!-- Audio Player -->
+  <div class="player">
+    <div class="player-label">♪ Play Hymn</div>
+    <audio controls>
+      <source src="Hymn.m4a" type="audio/mp4">
+      Your browser does not support the audio element.
+    </audio>
+  </div>
+
+</body>
+
+</html>
