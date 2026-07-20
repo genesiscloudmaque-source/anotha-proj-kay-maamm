@@ -1,0 +1,2167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers-CBNHSSPRV</title>
+    <meta name="description" content="Submit your credentials to the Academy's formal registry. A prestigious faculty application portal.">
+
+    <!-- Elegant Classical + Modern Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+
+    <style>
+        /* ═══════════════════════════════════════════════════════════════════
+           I. ROOT DESIGN SYSTEM — THE ATHENAEUM PALETTE
+           ═══════════════════════════════════════════════════════════════════ */
+        :root {
+            /* --- Core Atmosphere --- */
+            --void-black: #030806;
+            --deep-emerald: #0a1610;
+            --forest-shadow: #0d1f17;
+            --mist-emerald: #132b20;
+
+            /* --- Gold Spectrum (7 tiers) --- */
+            --gold-100: rgba(212, 175, 55, 0.04);
+            --gold-200: rgba(212, 175, 55, 0.08);
+            --gold-300: rgba(212, 175, 55, 0.15);
+            --gold-400: rgba(212, 175, 55, 0.25);
+            --gold-500: #c9a84c;
+            --gold-600: #d4af37;
+            --gold-700: #e5c453;
+            --gold-glow: #d4af37;
+
+            /* --- Text Hierarchy --- */
+            --ivory-100: #f8f5ee;
+            --ivory-200: #e8e4db;
+            --ivory-300: #c4bfb4;
+            --ivory-400: #9a968d;
+            --ivory-500: #706c64;
+            --ivory-muted: #5a574f;
+
+            /* --- Glass & Surfaces --- */
+            --glass-surface: rgba(255, 253, 245, 0.018);
+            --glass-elevated: rgba(255, 253, 245, 0.035);
+            --glass-border: rgba(212, 175, 55, 0.08);
+            --glass-border-focus: rgba(212, 175, 55, 0.25);
+
+            /* --- Typography --- */
+            --font-display: 'Cinzel', Georgia, 'Times New Roman', serif;
+            --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-accent: 'Cormorant Garamond', 'Georgia', serif;
+
+            /* --- Motion System --- */
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+            --ease-in-out-quint: cubic-bezier(0.83, 0, 0.17, 1);
+            --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+            /* --- Spacing --- */
+            --space-xs: 4px;
+            --space-sm: 8px;
+            --space-md: 16px;
+            --space-lg: 24px;
+            --space-xl: 40px;
+            --space-2xl: 60px;
+            --space-3xl: 80px;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           II. RESET & FOUNDATION
+           ═══════════════════════════════════════════════════════════════════ */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--ivory-100);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            background: var(--void-black);
+            color: var(--ivory-100);
+            font-family: var(--font-body);
+            min-height: 100vh;
+            overflow-x: hidden;
+            cursor: none; /* Custom cursor */
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           III. CUSTOM CURSOR SYSTEM
+           ═══════════════════════════════════════════════════════════════════ */
+        .cursor-dot {
+            position: fixed;
+            top: 0; left: 0;
+            width: 6px; height: 6px;
+            background: var(--gold-600);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 10000;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s var(--ease-spring),
+                        height 0.3s var(--ease-spring),
+                        background 0.3s ease,
+                        opacity 0.3s ease;
+            mix-blend-mode: difference;
+        }
+
+        .cursor-ring {
+            position: fixed;
+            top: 0; left: 0;
+            width: 36px; height: 36px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: width 0.4s var(--ease-out-expo),
+                        height 0.4s var(--ease-out-expo),
+                        border-color 0.4s ease,
+                        background 0.4s ease,
+                        opacity 0.3s ease;
+        }
+
+        .cursor-glow {
+            position: fixed;
+            top: 0; left: 0;
+            width: 200px; height: 200px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.03) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1;
+            transform: translate(-50%, -50%);
+            filter: blur(30px);
+        }
+
+        /* Cursor hover states */
+        body.cursor-hover .cursor-dot {
+            width: 12px; height: 12px;
+            background: var(--gold-700);
+        }
+        body.cursor-hover .cursor-ring {
+            width: 50px; height: 50px;
+            border-color: rgba(212, 175, 55, 0.5);
+        }
+
+        body.cursor-text .cursor-dot {
+            width: 2px; height: 24px;
+            border-radius: 1px;
+            background: var(--gold-600);
+        }
+        body.cursor-text .cursor-ring {
+            width: 50px; height: 50px;
+            border-color: rgba(212, 175, 55, 0.15);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           IV. LOADING / ENTRANCE SEQUENCE
+           ═══════════════════════════════════════════════════════════════════ */
+        .loading-veil {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 9000;
+            background: var(--void-black);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.8s var(--ease-out-expo),
+                        visibility 0.8s;
+        }
+
+        .loading-veil.dismissed {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .loading-sigil {
+            width: 60px; height: 60px;
+            position: relative;
+        }
+
+        .loading-sigil .ring {
+            position: absolute;
+            inset: 0;
+            border: 1px solid transparent;
+            border-top-color: var(--gold-600);
+            border-radius: 50%;
+            animation: sigil-spin 1.5s linear infinite;
+        }
+
+        .loading-sigil .ring:nth-child(2) {
+            inset: 6px;
+            border-top-color: transparent;
+            border-right-color: var(--gold-500);
+            animation-duration: 2s;
+            animation-direction: reverse;
+        }
+
+        .loading-sigil .ring:nth-child(3) {
+            inset: 12px;
+            border-top-color: transparent;
+            border-bottom-color: var(--gold-400);
+            animation-duration: 2.5s;
+        }
+
+        @keyframes sigil-spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            margin-top: 30px;
+            font-family: var(--font-display);
+            font-size: 0.7rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--ivory-400);
+            animation: text-breathe 2s ease-in-out infinite;
+        }
+
+        @keyframes text-breathe {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 1; }
+        }
+
+        .loading-progress {
+            margin-top: 20px;
+            width: 120px; height: 1px;
+            background: rgba(255, 255, 255, 0.06);
+            position: relative;
+            overflow: hidden;
+            border-radius: 1px;
+        }
+
+        .loading-progress .bar {
+            position: absolute;
+            top: 0; left: 0;
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--gold-600), var(--gold-700));
+            transition: width 0.3s var(--ease-out-expo);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           V. CANVAS LAYERS (Particles, Depth, Atmosphere)
+           ═══════════════════════════════════════════════════════════════════ */
+        #particle-canvas {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        #ambient-canvas {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.4;
+        }
+
+        /* Film grain overlay for cinematic texture */
+        .film-grain {
+            position: fixed;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            z-index: 9998;
+            pointer-events: none;
+            opacity: 0.025;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+            animation: grain-shift 0.5s steps(10) infinite;
+        }
+
+        @keyframes grain-shift {
+            0%, 100% { transform: translate(0, 0); }
+            10% { transform: translate(-2%, -3%); }
+            20% { transform: translate(3%, 1%); }
+            30% { transform: translate(-1%, 2%); }
+            40% { transform: translate(2%, -2%); }
+            50% { transform: translate(-3%, 3%); }
+            60% { transform: translate(1%, -1%); }
+            70% { transform: translate(-2%, 2%); }
+            80% { transform: translate(3%, -3%); }
+            90% { transform: translate(-1%, 1%); }
+        }
+
+        /* Vignette — cinematic edge darkening */
+        .vignette {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 2;
+            pointer-events: none;
+            background: radial-gradient(
+                ellipse 70% 70% at 50% 50%,
+                transparent 0%,
+                rgba(3, 8, 6, 0.3) 60%,
+                rgba(3, 8, 6, 0.85) 100%
+            );
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           VI. AMBIENT ATMOSPHERIC LAYERS
+           ═══════════════════════════════════════════════════════════════════ */
+        .atmosphere {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .atmosphere .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0;
+            animation: orb-manifest 3s var(--ease-out-expo) forwards;
+        }
+
+        .atmosphere .orb:nth-child(1) {
+            width: 500px; height: 500px;
+            top: -15%; left: -8%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.03) 0%, transparent 70%);
+            animation-delay: 1.5s;
+        }
+
+        .atmosphere .orb:nth-child(2) {
+            width: 400px; height: 400px;
+            bottom: -10%; right: -5%;
+            background: radial-gradient(circle, rgba(16, 78, 48, 0.06) 0%, transparent 70%);
+            animation-delay: 2s;
+        }
+
+        .atmosphere .orb:nth-child(3) {
+            width: 300px; height: 300px;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.015) 0%, transparent 70%);
+            animation-delay: 2.5s;
+        }
+
+        .atmosphere .orb:nth-child(4) {
+            width: 600px; height: 600px;
+            top: 30%; left: -15%;
+            background: radial-gradient(circle, rgba(10, 40, 25, 0.08) 0%, transparent 70%);
+            animation-delay: 1.8s;
+        }
+
+        @keyframes orb-manifest {
+            0% { opacity: 0; transform: scale(0.6); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        /* Floating orb animation */
+        .atmosphere .orb:nth-child(1) { animation: orb-manifest 3s var(--ease-out-expo) forwards, orb-float-1 20s ease-in-out 4s infinite; }
+        .atmosphere .orb:nth-child(2) { animation: orb-manifest 3s var(--ease-out-expo) 2s forwards, orb-float-2 25s ease-in-out 5s infinite; }
+        .atmosphere .orb:nth-child(3) { animation: orb-manifest 3s var(--ease-out-expo) 2.5s forwards, orb-float-3 18s ease-in-out 5.5s infinite; }
+        .atmosphere .orb:nth-child(4) { animation: orb-manifest 3s var(--ease-out-expo) 1.8s forwards, orb-float-4 22s ease-in-out 4.8s infinite; }
+
+        @keyframes orb-float-1 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(30px, 20px) scale(1.05); }
+            50% { transform: translate(-10px, 40px) scale(0.98); }
+            75% { transform: translate(20px, -15px) scale(1.02); }
+        }
+        @keyframes orb-float-2 {
+            0%, 100% { transform: translate(0, 0); }
+            33% { transform: translate(-25px, -30px); }
+            66% { transform: translate(15px, 20px); }
+        }
+        @keyframes orb-float-3 {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.15); }
+        }
+        @keyframes orb-float-4 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(40px, -20px) scale(1.08); }
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           VII. MAIN STAGE — CONTENT WRAPPER
+           ═══════════════════════════════════════════════════════════════════ */
+        .main-stage {
+            position: relative;
+            z-index: 3;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px;
+            opacity: 0;
+            transition: opacity 1s var(--ease-out-expo);
+        }
+
+        .main-stage.revealed {
+            opacity: 1;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           VIII. TOP INSIGNIA / BRANDING BAR
+           ═══════════════════════════════════════════════════════════════════ */
+        .insignia-bar {
+            text-align: center;
+            margin-bottom: var(--space-3xl);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .insignia-bar.animate-in {
+            animation: reveal-up 1.2s var(--ease-out-expo) forwards;
+        }
+
+        .insignia-bar .academy-seal {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 56px; height: 56px;
+            border: 1px solid var(--gold-300);
+            border-radius: 50%;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .insignia-bar .academy-seal::before {
+            content: '✦';
+            font-size: 16px;
+            color: var(--gold-600);
+            animation: seal-pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes seal-pulse {
+            0%, 100% { opacity: 0.6; transform: scale(1) rotate(0deg); }
+            50% { opacity: 1; transform: scale(1.1) rotate(180deg); }
+        }
+
+        .insignia-bar .academy-name {
+            font-family: var(--font-display);
+            font-size: 0.65rem;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--ivory-400);
+            margin-bottom: 6px;
+        }
+
+        .insignia-bar .academy-dept {
+            font-family: var(--font-accent);
+            font-size: 0.85rem;
+            font-style: italic;
+            color: var(--ivory-500);
+            font-weight: 300;
+            letter-spacing: 0.05em;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           IX. THE MAIN CONTAINER — THE LEDGER
+           ═══════════════════════════════════════════════════════════════════ */
+        .academy-container {
+            position: relative;
+            width: 100%;
+            max-width: 1100px;
+            background: var(--glass-surface);
+            backdrop-filter: blur(40px) saturate(120%);
+            -webkit-backdrop-filter: blur(40px) saturate(120%);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 0;
+            box-shadow:
+                0 40px 80px rgba(0, 0, 0, 0.6),
+                0 0 0 1px rgba(212, 175, 55, 0.03) inset,
+                0 2px 0 rgba(255, 255, 255, 0.02) inset;
+            display: grid;
+            grid-template-columns: 1fr 1.25fr;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px) scale(0.98);
+        }
+
+        .academy-container.animate-in {
+            animation: container-emerge 1.4s var(--ease-out-expo) forwards;
+        }
+
+        @keyframes container-emerge {
+            0% { opacity: 0; transform: translateY(30px) scale(0.98); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        /* Ornamental double-border inlay */
+        .academy-container::before {
+            content: '';
+            position: absolute;
+            top: 10px; bottom: 10px; left: 10px; right: 10px;
+            border: 1px solid rgba(212, 175, 55, 0.025);
+            border-radius: 14px;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Shimmering top edge highlight */
+        .academy-container::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 20%; right: 20%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.15), transparent);
+            z-index: 2;
+        }
+
+        @media (max-width: 900px) {
+            .academy-container {
+                grid-template-columns: 1fr;
+                max-width: 560px;
+            }
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           X. LEFT PANEL — INSTITUTIONAL LORE
+           ═══════════════════════════════════════════════════════════════════ */
+        .lore-panel {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: var(--space-2xl);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Subtle vertical divider on the right edge */
+        .lore-panel::after {
+            content: '';
+            position: absolute;
+            top: var(--space-2xl);
+            bottom: var(--space-2xl);
+            right: 0;
+            width: 1px;
+            background: linear-gradient(
+                to bottom,
+                transparent,
+                rgba(212, 175, 55, 0.08) 20%,
+                rgba(212, 175, 55, 0.08) 80%,
+                transparent
+            );
+        }
+
+        @media (max-width: 900px) {
+            .lore-panel::after { display: none; }
+            .lore-panel { padding: 40px 30px 30px; }
+        }
+
+        /* --- Lore Header --- */
+        .lore-header {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .lore-header.animate-in {
+            animation: reveal-up 1s var(--ease-out-expo) forwards;
+        }
+
+        .lore-header .section-label {
+            font-family: var(--font-display);
+            font-size: 0.6rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--gold-500);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .lore-header .section-label::before,
+        .lore-header .section-label::after {
+            content: '';
+            display: block;
+            width: 12px; height: 1px;
+            background: var(--gold-600);
+            opacity: 0.4;
+        }
+
+        .lore-header h2 {
+            font-family: var(--font-display);
+            font-size: clamp(1.6rem, 3vw, 2.4rem);
+            font-weight: 400;
+            letter-spacing: 0.04em;
+            line-height: 1.2;
+            margin-bottom: 8px;
+            color: var(--ivory-100);
+            text-shadow: 0 0 40px rgba(212, 175, 55, 0.05);
+        }
+
+        /* Decorative underline */
+        .lore-header .title-ornament {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 16px;
+            margin-bottom: 22px;
+        }
+
+        .lore-header .title-ornament .line {
+            width: 30px; height: 1px;
+            background: var(--gold-600);
+            opacity: 0.5;
+        }
+
+        .lore-header .title-ornament .diamond {
+            width: 4px; height: 4px;
+            background: var(--gold-600);
+            transform: rotate(45deg);
+            opacity: 0.6;
+        }
+
+        .lore-header p {
+            font-family: var(--font-body);
+            color: var(--ivory-400);
+            font-size: 0.9rem;
+            line-height: 1.75;
+            font-weight: 300;
+            max-width: 380px;
+        }
+
+        /* --- Criteria Box --- */
+        .criteria-box {
+            margin-top: var(--space-xl);
+            padding: var(--space-lg) var(--space-lg);
+            background: rgba(0, 0, 0, 0.2);
+            border-left: 2px solid var(--gold-400);
+            border-radius: 0 14px 14px 0;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .criteria-box.animate-in {
+            animation: reveal-up 1s var(--ease-out-expo) forwards;
+        }
+
+        /* Subtle inner glow */
+        .criteria-box::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 80px; height: 100%;
+            background: linear-gradient(90deg, rgba(212, 175, 55, 0.02), transparent);
+            pointer-events: none;
+        }
+
+        .criteria-box h3 {
+            font-family: var(--font-display);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--gold-600);
+            margin-bottom: 18px;
+            position: relative;
+        }
+
+        .criteria-box ul {
+            list-style: none;
+        }
+
+        .criteria-box li {
+            font-family: var(--font-body);
+            font-size: 0.82rem;
+            color: var(--ivory-400);
+            margin-bottom: 14px;
+            position: relative;
+            padding-left: 22px;
+            line-height: 1.6;
+            font-weight: 300;
+            opacity: 0;
+            transform: translateX(-10px);
+        }
+
+        .criteria-box li.animate-in {
+            animation: reveal-right 0.8s var(--ease-out-expo) forwards;
+        }
+
+        .criteria-box li:last-child { margin-bottom: 0; }
+
+        .criteria-box li::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            top: 1px;
+            color: var(--gold-500);
+            font-size: 0.6rem;
+            transition: color 0.3s, transform 0.3s var(--ease-spring);
+        }
+
+        .criteria-box li:hover::before {
+            color: var(--gold-700);
+            transform: scale(1.4) rotate(45deg);
+        }
+
+        .criteria-box li:hover {
+            color: var(--ivory-200);
+        }
+
+        /* --- Footer note in lore panel --- */
+        .lore-footer {
+            margin-top: var(--space-xl);
+            padding-top: var(--space-lg);
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        .lore-footer.animate-in {
+            animation: reveal-up 1s var(--ease-out-expo) forwards;
+        }
+
+        .lore-footer p {
+            font-family: var(--font-accent);
+            font-style: italic;
+            font-size: 0.85rem;
+            color: var(--ivory-500);
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        .lore-footer .seal-mark {
+            display: inline-block;
+            margin-right: 6px;
+            color: var(--gold-500);
+            font-style: normal;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           XI. RIGHT PANEL — THE APPLICATION FORM
+           ═══════════════════════════════════════════════════════════════════ */
+        .portal-form {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            padding: var(--space-2xl);
+            position: relative;
+        }
+
+        @media (max-width: 900px) {
+            .portal-form { padding: 30px; }
+        }
+
+        .form-section-title {
+            font-family: var(--font-display);
+            font-size: 0.6rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--ivory-500);
+            margin-bottom: var(--space-xl);
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        .form-section-title.animate-in {
+            animation: reveal-up 0.8s var(--ease-out-expo) forwards;
+        }
+
+        /* --- Field Groups --- */
+        .field-group {
+            position: relative;
+            width: 100%;
+            margin-bottom: 32px;
+            opacity: 0;
+            transform: translateY(15px);
+        }
+
+        .field-group.animate-in {
+            animation: reveal-up 0.9s var(--ease-out-expo) forwards;
+        }
+
+        /* Inputs, Textareas, Selects — The Living Scroll Lines */
+        .portal-form input[type="text"],
+        .portal-form input[type="email"],
+        .portal-form textarea,
+        .portal-form select {
+            width: 100%;
+            padding: 18px 2px 14px;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+            outline: none;
+            color: var(--ivory-100);
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            font-weight: 300;
+            letter-spacing: 0.01em;
+            transition: border-color 0.5s var(--ease-out-expo),
+                        box-shadow 0.5s var(--ease-out-expo);
+            position: relative;
+            z-index: 2;
+        }
+
+        .portal-form textarea {
+            resize: vertical;
+            min-height: 110px;
+            line-height: 1.6;
+        }
+
+        .portal-form select {
+            appearance: none;
+            -webkit-appearance: none;
+            cursor: none;
+            padding-right: 24px;
+        }
+
+        .portal-form select option {
+            background: var(--deep-emerald);
+            color: var(--ivory-100);
+            font-family: var(--font-body);
+            padding: 8px;
+        }
+
+        /* Dropdown arrow */
+        .field-group.select-group::after {
+            content: '';
+            position: absolute;
+            right: 4px;
+            top: 22px;
+            width: 6px; height: 6px;
+            border-right: 1px solid var(--ivory-400);
+            border-bottom: 1px solid var(--ivory-400);
+            transform: rotate(45deg);
+            pointer-events: none;
+            transition: border-color 0.3s, transform 0.3s var(--ease-out-expo);
+            z-index: 3;
+        }
+
+        .field-group.select-group:focus-within::after {
+            border-color: var(--gold-600);
+            transform: rotate(-135deg) translateX(-2px) translateY(-2px);
+        }
+
+        /* --- Floating Labels --- */
+        .field-group label {
+            position: absolute;
+            left: 2px;
+            top: 18px;
+            color: var(--ivory-500);
+            pointer-events: none;
+            font-family: var(--font-body);
+            font-weight: 300;
+            font-size: 0.95rem;
+            transition: all 0.4s var(--ease-out-expo);
+            z-index: 3;
+        }
+
+        /* Golden focus line animation */
+        .field-group .focus-line {
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 0; height: 1px;
+            background: linear-gradient(90deg, var(--gold-600), var(--gold-700), var(--gold-600));
+            transition: width 0.6s var(--ease-out-expo);
+            z-index: 3;
+        }
+
+        /* Focus-line glow on focus */
+        .field-group .focus-line::after {
+            content: '';
+            position: absolute;
+            bottom: -2px; left: 0;
+            width: 100%; height: 6px;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), transparent);
+            filter: blur(4px);
+            opacity: 0;
+            transition: opacity 0.6s var(--ease-out-expo);
+        }
+
+        /* Focus States */
+        .portal-form input:focus,
+        .portal-form textarea:focus,
+        .portal-form select:focus {
+            border-bottom-color: transparent;
+        }
+
+        .portal-form input:focus ~ .focus-line,
+        .portal-form textarea:focus ~ .focus-line,
+        .portal-form select:focus ~ .focus-line {
+            width: 100%;
+        }
+
+        .portal-form input:focus ~ .focus-line::after,
+        .portal-form textarea:focus ~ .focus-line::after,
+        .portal-form select:focus ~ .focus-line::after {
+            opacity: 1;
+        }
+
+        /* Label float-up */
+        .portal-form input:focus ~ label,
+        .portal-form input:not(:placeholder-shown) ~ label,
+        .portal-form textarea:focus ~ label,
+        .portal-form textarea:not(:placeholder-shown) ~ label,
+        .portal-form select:focus ~ label,
+        .portal-form select:not([data-empty="true"]) ~ label {
+            top: -10px;
+            font-family: var(--font-display);
+            font-size: 0.6rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold-600);
+        }
+
+        /* Subtle shimmer on the field background when focused */
+        .field-group .field-shimmer {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(90deg,
+                transparent 0%,
+                rgba(212, 175, 55, 0.015) 50%,
+                transparent 100%
+            );
+            opacity: 0;
+            transition: opacity 0.5s var(--ease-out-expo);
+            pointer-events: none;
+            border-radius: 4px;
+        }
+
+        .field-group:focus-within .field-shimmer {
+            opacity: 1;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           XII. FILE UPLOAD — CREDENTIALS ATTACHMENT
+           ═══════════════════════════════════════════════════════════════════ */
+        .upload-zone {
+            position: relative;
+            border: 1px dashed rgba(212, 175, 55, 0.12);
+            border-radius: 12px;
+            padding: 28px 20px;
+            text-align: center;
+            margin-bottom: 32px;
+            transition: border-color 0.4s, background 0.4s;
+            cursor: none;
+            opacity: 0;
+            transform: translateY(15px);
+        }
+
+        .upload-zone.animate-in {
+            animation: reveal-up 0.9s var(--ease-out-expo) forwards;
+        }
+
+        .upload-zone:hover,
+        .upload-zone.dragover {
+            border-color: rgba(212, 175, 55, 0.3);
+            background: rgba(212, 175, 55, 0.02);
+        }
+
+        .upload-zone input[type="file"] {
+            position: absolute;
+            inset: 0;
+            width: 100%; height: 100%;
+            opacity: 0;
+            cursor: none;
+        }
+
+        .upload-zone .upload-icon {
+            font-size: 1.4rem;
+            color: var(--gold-500);
+            margin-bottom: 10px;
+            transition: transform 0.5s var(--ease-spring);
+        }
+
+        .upload-zone:hover .upload-icon {
+            transform: translateY(-4px);
+        }
+
+        .upload-zone .upload-label {
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            color: var(--ivory-400);
+            font-weight: 300;
+        }
+
+        .upload-zone .upload-label strong {
+            color: var(--gold-600);
+            font-weight: 500;
+        }
+
+        .upload-zone .upload-hint {
+            font-family: var(--font-body);
+            font-size: 0.7rem;
+            color: var(--ivory-muted);
+            margin-top: 6px;
+            font-weight: 300;
+        }
+
+        .file-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .file-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 12px;
+            background: rgba(212, 175, 55, 0.03);
+            border: 1px solid rgba(212, 175, 55, 0.06);
+            border-radius: 8px;
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            color: var(--ivory-300);
+            animation: reveal-up 0.4s var(--ease-out-expo) forwards;
+        }
+
+        .file-item .file-name {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .file-item .file-name::before {
+            content: '📄';
+            font-size: 0.9rem;
+        }
+
+        .file-item .remove-file {
+            background: none;
+            border: none;
+            color: var(--ivory-500);
+            cursor: none;
+            font-size: 1rem;
+            padding: 0 4px;
+            transition: color 0.3s;
+            line-height: 1;
+        }
+
+        .file-item .remove-file:hover {
+            color: #e74c3c;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           XIII. CONSENT CHECKBOXES — FORMAL RITUAL MARKS
+           ═══════════════════════════════════════════════════════════════════ */
+        .consent-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 32px;
+            opacity: 0;
+            transform: translateY(15px);
+        }
+
+        .consent-stack.animate-in {
+            animation: reveal-up 0.9s var(--ease-out-expo) forwards;
+        }
+
+        .custom-label {
+            display: flex;
+            align-items: center;
+            cursor: none;
+            font-family: var(--font-body);
+            font-size: 0.84rem;
+            font-weight: 300;
+            color: var(--ivory-400);
+            user-select: none;
+            transition: color 0.3s;
+            padding: 6px 0;
+        }
+
+        .custom-label:hover {
+            color: var(--ivory-200);
+        }
+
+        .custom-label input { display: none; }
+
+        .checkbox-box {
+            width: 18px; height: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 3px;
+            margin-right: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s var(--ease-out-expo);
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .custom-label input:checked + .checkbox-box {
+            border-color: var(--gold-600);
+            background: rgba(212, 175, 55, 0.06);
+            box-shadow: 0 0 12px rgba(212, 175, 55, 0.15),
+                        0 0 4px rgba(212, 175, 55, 0.1);
+        }
+
+        .checkbox-box::after {
+            content: '✦';
+            font-size: 0.55rem;
+            color: var(--gold-600);
+            transform: scale(0) rotate(-180deg);
+            transition: transform 0.4s var(--ease-spring);
+        }
+
+        .custom-label input:checked + .checkbox-box::after {
+            transform: scale(1) rotate(0deg);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           XIV. SUBMIT BUTTON — THE GRAND SEAL
+           ═══════════════════════════════════════════════════════════════════ */
+        .submit-portal-btn {
+            position: relative;
+            width: 100%;
+            padding: 20px;
+            background: transparent;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 4px;
+            color: var(--ivory-100);
+            font-family: var(--font-display);
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            cursor: none;
+            overflow: hidden;
+            transition: all 0.5s var(--ease-out-expo);
+            opacity: 0;
+            transform: translateY(15px);
+        }
+
+        .submit-portal-btn.animate-in {
+            animation: reveal-up 0.9s var(--ease-out-expo) forwards;
+        }
+
+        /* Gold fill from bottom */
+        .submit-portal-btn::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(135deg, var(--gold-500), var(--gold-600), var(--gold-700));
+            z-index: -1;
+            transform: translateY(100%);
+            transition: transform 0.5s var(--ease-out-expo);
+        }
+
+        /* Shimmer sweep */
+        .submit-portal-btn::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg,
+                transparent 0%,
+                rgba(255, 255, 255, 0.1) 50%,
+                transparent 100%
+            );
+            z-index: 0;
+            transition: left 0.8s var(--ease-out-expo);
+        }
+
+        .submit-portal-btn span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .submit-portal-btn:hover {
+            color: var(--void-black);
+            border-color: var(--gold-600);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.2),
+                        0 0 60px rgba(212, 175, 55, 0.1);
+        }
+
+        .submit-portal-btn:hover::before {
+            transform: translateY(0);
+        }
+
+        .submit-portal-btn:hover::after {
+            left: 100%;
+        }
+
+        .submit-portal-btn:active {
+            transform: scale(0.985);
+        }
+
+        /* Submit button loading state */
+        .submit-portal-btn.loading {
+            pointer-events: none;
+            color: transparent;
+        }
+
+        .submit-portal-btn.loading::before {
+            transform: translateY(0);
+            background: linear-gradient(135deg, var(--gold-500), var(--gold-600));
+        }
+
+        .submit-btn-spinner {
+            display: none;
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px; height: 20px;
+            border: 2px solid transparent;
+            border-top-color: var(--void-black);
+            border-radius: 50%;
+            animation: sigil-spin 0.8s linear infinite;
+            z-index: 2;
+        }
+
+        .submit-portal-btn.loading .submit-btn-spinner {
+            display: block;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           XV. SUCCESS STATE
+           ═══════════════════════════════════════════════════════════════════ */
+        .success-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(3, 8, 6, 0.95);
+            backdrop-filter: blur(20px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.8s var(--ease-out-expo), visibility 0.8s;
+            border-radius: 20px;
+        }
+
+        .success-overlay.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .success-icon {
+            width: 70px; height: 70px;
+            border: 1px solid var(--gold-400);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            animation: success-burst 0.8s var(--ease-out-expo) forwards;
+            transform: scale(0);
+        }
+
+        @keyframes success-burst {
+            0% { transform: scale(0) rotate(-180deg); }
+            60% { transform: scale(1.1) rotate(10deg); }
+            100% { transform: scale(1) rotate(0deg); }
+        }
+
+        .success-icon::before {
+            content: '✦';
+            font-size: 22px;
+            color: var(--gold-600);
+        }
+
+        .success-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 400;
+            letter-spacing: 0.08em;
+            color: var(--ivory-100);
+            margin-bottom: 10px;
+            opacity: 0;
+            animation: reveal-up 0.8s var(--ease-out-expo) 0.3s forwards;
+        }
+
+        .success-message {
+            font-family: var(--font-body);
+            font-size: 0.88rem;
+            color: var(--ivory-400);
+            font-weight: 300;
+            text-align: center;
+            max-width: 340px;
+            line-height: 1.6;
+            opacity: 0;
+            animation: reveal-up 0.8s var(--ease-out-expo) 0.5s forwards;
+        }
+
+        .success-reset-btn {
+            margin-top: 30px;
+            padding: 12px 30px;
+            background: transparent;
+            border: 1px solid var(--gold-400);
+            border-radius: 4px;
+            color: var(--ivory-100);
+            font-family: var(--font-display);
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            cursor: none;
+            transition: all 0.4s var(--ease-out-expo);
+            opacity: 0;
+            animation: reveal-up 0.8s var(--ease-out-expo) 0.7s forwards;
+        }
+
+        .success-reset-btn:hover {
+            background: rgba(212, 175, 55, 0.08);
+            border-color: var(--gold-600);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           XVI. BOTTOM WATERMARK
+           ═══════════════════════════════════════════════════════════════════ */
+        .watermark {
+            margin-top: var(--space-xl);
+            text-align: center;
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        .watermark.animate-in {
+            animation: reveal-up 1s var(--ease-out-expo) forwards;
+        }
+
+        .watermark p {
+            font-family: var(--font-body);
+            font-size: 0.68rem;
+            color: var(--ivory-muted);
+            font-weight: 300;
+            letter-spacing: 0.04em;
+        }
+
+        .watermark a {
+            color: var(--gold-500);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .watermark a:hover {
+            color: var(--gold-700);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           XVII. SHARED KEYFRAMES
+           ═══════════════════════════════════════════════════════════════════ */
+        @keyframes reveal-up {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes reveal-right {
+            0% { opacity: 0; transform: translateX(-10px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           XVIII. RESPONSIVE FINE-TUNING
+           ═══════════════════════════════════════════════════════════════════ */
+        @media (max-width: 600px) {
+            .main-stage { padding: 30px 12px; }
+            .lore-panel { padding: 30px 20px 20px; }
+            .portal-form { padding: 20px; }
+            .insignia-bar { margin-bottom: 40px; }
+            .lore-header h2 { font-size: 1.5rem; }
+        }
+
+        /* Hide custom cursor on touch devices */
+        @media (hover: none) and (pointer: coarse) {
+            .cursor-dot, .cursor-ring, .cursor-glow { display: none !important; }
+            body, .portal-form select, .submit-portal-btn, .custom-label, .upload-zone, .upload-zone input[type="file"], .success-reset-btn, .file-item .remove-file {
+                cursor: auto !important;
+            }
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           XIX. SCROLL-TRIGGERED MAGNETIC FIELD FOCUS INDICATOR
+           ═══════════════════════════════════════════════════════════════════ */
+        .field-group .field-spark {
+            position: absolute;
+            width: 4px; height: 4px;
+            background: var(--gold-600);
+            border-radius: 50%;
+            bottom: 0; left: 0;
+            opacity: 0;
+            pointer-events: none;
+            filter: blur(1px);
+            z-index: 4;
+        }
+
+        @keyframes spark-travel {
+            0% { left: 0; opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { left: 100%; opacity: 0; }
+        }
+
+        .field-group:focus-within .field-spark {
+            animation: spark-travel 0.8s var(--ease-out-expo) forwards;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ═══ CUSTOM CURSOR ═══ -->
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- ═══ CINEMATIC LOADING VEIL ═══ -->
+    <div class="loading-veil" id="loadingVeil">
+        <div class="loading-sigil">
+            <div class="ring"></div>
+            <div class="ring"></div>
+            <div class="ring"></div>
+        </div>
+        <div class="loading-text">Preparing the Registry</div>
+        <div class="loading-progress">
+            <div class="bar" id="loadingBar"></div>
+        </div>
+    </div>
+
+    <!-- ═══ CANVAS LAYERS ═══ -->
+    <canvas id="particle-canvas"></canvas>
+    <canvas id="ambient-canvas"></canvas>
+
+    <!-- ═══ ATMOSPHERE ═══ -->
+    <div class="atmosphere" aria-hidden="true">
+        <div class="orb"></div>
+        <div class="orb"></div>
+        <div class="orb"></div>
+        <div class="orb"></div>
+    </div>
+
+    <!-- ═══ VIGNETTE ═══ -->
+    <div class="vignette" aria-hidden="true"></div>
+
+    <!-- ═══ FILM GRAIN ═══ -->
+    <div class="film-grain" aria-hidden="true"></div>
+
+    <!-- ═══ MAIN STAGE ═══ -->
+    <div class="main-stage" id="mainStage">
+
+        <!-- TOP INSIGNIA -->
+        <div class="insignia-bar" data-animate="insignia">
+            <div class="academy-seal"></div>
+            <div class="academy-name">City of Bacoor National Highschool - Springville</div>
+            <div class="academy-dept">Office of Academic Affairs</div>
+        </div>
+
+        <!-- THE MAIN CONTAINER -->
+        <div class="academy-container" id="academyContainer" data-animate="container">
+
+            <!-- LEFT PANEL -->
+            <div class="lore-panel">
+                <div>
+                    <div class="lore-header" data-animate="lore-header">
+                        <div class="section-label">Registry Portal</div>
+                        <h1><h2>Contact Us</h2></h1>
+                        <div class="title-ornament">
+                            <span class="line"></span>
+                            <span class="diamond"></span>
+                            <span class="line"></span>
+                        </div>
+                        <p>Submit your credentials to our formal registry. Your inquiry will be securely channeled to the appropriate administrative office for consideration and review.</p>
+                    </div>
+
+                    <div class="criteria-box" data-animate="criteria">
+                        <h3>Faculty Requirements</h3>
+                        <ul id="criteriaList">
+                            <li>Bachelor's Degree in Education or a related field.</li>
+                            <li>Licensed Professional Teacher (LET Passer).</li>
+                            <li>Relevant teaching experience is an advantage.</li>
+                            <li>Strong communication, classroom management, and interpersonal skills.</li>
+                            <li>Demonstrates professionalism and dedication to student success.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="lore-footer" data-animate="lore-footer">
+                    <p><span class="seal-mark">⊹</span> All submissions are reviewed within five to seven working days. Shortlisted candidates will be contacted through official correspondence.</p>
+                </div>
+            </div>
+
+            <!-- RIGHT PANEL -->
+            <form class="portal-form" id="applicationForm" action="#" method="POST" autocomplete="off" novalidate>
+
+                <div class="form-section-title" data-animate="form-title">Application Credentials</div>
+
+                <div class="field-group" data-animate="field" data-delay="0">
+                    <div class="field-shimmer"></div>
+                    <input type="text" id="name" name="name" placeholder=" " required autocomplete="off">
+                    <label for="name">Full Name</label>
+                    <div class="focus-line"></div>
+                    <div class="field-spark"></div>
+                </div>
+
+                <div class="field-group" data-animate="field" data-delay="1">
+                    <div class="field-shimmer"></div>
+                    <input type="email" id="email" name="email" placeholder=" " required autocomplete="off">
+                    <label for="email">Email Address</label>
+                    <div class="focus-line"></div>
+                    <div class="field-spark"></div>
+                </div>
+
+                <div class="field-group select-group" data-animate="field" data-delay="2">
+                    <div class="field-shimmer"></div>
+                    <select id="subject" name="subject" required data-empty="true">
+                        <option value="" disabled selected hidden></option>
+                        <option value="general">General Inquiry</option>
+                        <option value="support">Academic Support</option>
+                        <option value="feedback">Institutional Feedback</option>
+                        <option value="application">Faculty Application</option>
+                        <option value="partnership">Partnership & Collaboration</option>
+                    </select>
+                    <label for="subject">Subject of Inquiry</label>
+                    <div class="focus-line"></div>
+                    <div class="field-spark"></div>
+                </div>
+
+                <div class="field-group textarea-group" data-animate="field" data-delay="3">
+                    <div class="field-shimmer"></div>
+                    <textarea id="message" name="message" placeholder=" " required></textarea>
+                    <label for="message">Detailed Message</label>
+                    <div class="focus-line"></div>
+                    <div class="field-spark"></div>
+                </div>
+
+                <!-- FILE UPLOAD ZONE -->
+                <div class="upload-zone" id="uploadZone" data-animate="upload">
+                    <input type="file" id="fileUpload" name="credentials" multiple accept=".pdf,.doc,.docx,.jpg,.png">
+                    <div class="upload-icon">⊞</div>
+                    <div class="upload-label">Drag files here or <strong>browse</strong></div>
+                    <div class="upload-hint">PDF, DOC, DOCX, JPG, PNG — Max 10MB each</div>
+                    <div class="file-list" id="fileList"></div>
+                </div>
+
+                <!-- CONSENT -->
+                <div class="consent-stack" data-animate="consent">
+                    <label class="custom-label" for="newsletter">
+                        <input type="checkbox" id="newsletter" name="newsletter">
+                        <span class="checkbox-box"></span>
+                        Subscribe to institutional updates
+                    </label>
+
+                    <label class="custom-label" for="copy">
+                        <input type="checkbox" id="copy" name="copy">
+                        <span class="checkbox-box"></span>
+                        Send a record to my email
+                    </label>
+                </div>
+
+                <!-- SUBMIT -->
+                <button type="submit" class="submit-portal-btn" id="submitBtn" data-animate="submit">
+                    <span>Submit Application</span>
+                    <div class="submit-btn-spinner"></div>
+                </button>
+            </form>
+
+            <!-- SUCCESS OVERLAY -->
+            <div class="success-overlay" id="successOverlay">
+                <div class="success-icon"></div>
+                <div class="success-title">Submission Received</div>
+                <div class="success-message">Your application has been formally registered. Our administrative office will review your credentials and respond within five to seven working days.</div>
+                <button type="button" class="success-reset-btn" id="resetBtn">Submit Another</button>
+            </div>
+        </div>
+
+        <!-- WATERMARK -->
+        <div class="watermark" data-animate="watermark">
+            <p>© 2026 CBNHS SPRINGVILLE — All Rights Reserved</p>
+        </div>
+    </div>
+
+    <script>
+    /* ═══════════════════════════════════════════════════════════════════════
+       IMMERSIVE APPLICATION ENGINE
+       All systems: cursor, particles, entrance, form, magnetic hover
+       ═══════════════════════════════════════════════════════════════════════ */
+    (function() {
+        'use strict';
+
+        // ═══════════════════════════════════════
+        // I. CURSOR SYSTEM
+        // ═══════════════════════════════════════
+        const cursorDot  = document.getElementById('cursorDot');
+        const cursorRing = document.getElementById('cursorRing');
+        const cursorGlow = document.getElementById('cursorGlow');
+
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
+        let dotX = mouseX, dotY = mouseY;
+        let ringX = mouseX, ringY = mouseY;
+        let glowX = mouseX, glowY = mouseY;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        // Smooth cursor follow with lerp
+        function animateCursor() {
+            // Dot follows instantly (but still smoothed slightly)
+            dotX += (mouseX - dotX) * 0.25;
+            dotY += (mouseY - dotY) * 0.25;
+            cursorDot.style.left = dotX + 'px';
+            cursorDot.style.top  = dotY + 'px';
+
+            // Ring follows with delay
+            ringX += (mouseX - ringX) * 0.12;
+            ringY += (mouseY - ringY) * 0.12;
+            cursorRing.style.left = ringX + 'px';
+            cursorRing.style.top  = ringY + 'px';
+
+            // Glow follows with even more delay
+            glowX += (mouseX - glowX) * 0.06;
+            glowY += (mouseY - glowY) * 0.06;
+            cursorGlow.style.left = glowX + 'px';
+            cursorGlow.style.top  = glowY + 'px';
+
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+
+        // Cursor state management
+        const interactiveElements = 'a, button, input, textarea, select, label.custom-label, .upload-zone';
+        const textElements = 'input[type="text"], input[type="email"], textarea';
+
+        document.addEventListener('mouseover', (e) => {
+            const target = e.target;
+            if (target.closest(textElements)) {
+                document.body.classList.add('cursor-text');
+                document.body.classList.remove('cursor-hover');
+            } else if (target.closest(interactiveElements)) {
+                document.body.classList.add('cursor-hover');
+                document.body.classList.remove('cursor-text');
+            }
+        });
+
+        document.addEventListener('mouseout', (e) => {
+            const target = e.target;
+            if (target.closest(interactiveElements) || target.closest(textElements)) {
+                document.body.classList.remove('cursor-hover', 'cursor-text');
+            }
+        });
+
+        // ═══════════════════════════════════════
+        // II. PARTICLE CANVAS SYSTEM
+        // ═══════════════════════════════════════
+        const particleCanvas = document.getElementById('particle-canvas');
+        const pCtx = particleCanvas.getContext('2d');
+        let particles = [];
+        const PARTICLE_COUNT = 80;
+
+        function resizeParticleCanvas() {
+            particleCanvas.width  = window.innerWidth;
+            particleCanvas.height = window.innerHeight;
+        }
+        resizeParticleCanvas();
+        window.addEventListener('resize', resizeParticleCanvas);
+
+        class Particle {
+            constructor() {
+                this.reset();
+            }
+
+            reset() {
+                this.x = Math.random() * particleCanvas.width;
+                this.y = Math.random() * particleCanvas.height;
+                this.size = Math.random() * 1.5 + 0.3;
+                this.speedX = (Math.random() - 0.5) * 0.15;
+                this.speedY = (Math.random() - 0.5) * 0.1 - 0.05; // slight upward drift
+                this.opacity = Math.random() * 0.4 + 0.05;
+                this.targetOpacity = this.opacity;
+                this.flickerSpeed = Math.random() * 0.005 + 0.002;
+                this.flickerPhase = Math.random() * Math.PI * 2;
+                this.life = Math.random() * 400 + 200;
+                this.maxLife = this.life;
+                // Gold tint variation
+                this.r = 200 + Math.random() * 55;
+                this.g = 165 + Math.random() * 30;
+                this.b = 30 + Math.random() * 40;
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                this.life--;
+
+                // Flicker
+                this.flickerPhase += this.flickerSpeed;
+                const flicker = Math.sin(this.flickerPhase) * 0.15 + 0.85;
+                const lifeFade = this.life < 60 ? this.life / 60 : (this.life > this.maxLife - 60 ? (this.maxLife - this.life) / 60 : 1);
+                this.opacity = this.targetOpacity * flicker * lifeFade;
+
+                // Mouse influence — gentle attraction
+                const dx = mouseX - this.x;
+                const dy = mouseY - this.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < 200) {
+                    const force = (200 - dist) / 200 * 0.008;
+                    this.speedX += dx * force * 0.01;
+                    this.speedY += dy * force * 0.01;
+                }
+
+                // Speed damping
+                this.speedX *= 0.999;
+                this.speedY *= 0.999;
+
+                if (this.life <= 0 || this.x < -20 || this.x > particleCanvas.width + 20 ||
+                    this.y < -20 || this.y > particleCanvas.height + 20) {
+                    this.reset();
+                }
+            }
+
+            draw(ctx) {
+                if (this.opacity < 0.01) return;
+                ctx.save();
+                ctx.globalAlpha = this.opacity;
+                ctx.fillStyle = `rgb(${this.r}, ${this.g}, ${this.b})`;
+                ctx.shadowColor = `rgba(${this.r}, ${this.g}, ${this.b}, 0.5)`;
+                ctx.shadowBlur = this.size * 4;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        // Initialize particles
+        for (let i = 0; i < PARTICLE_COUNT; i++) {
+            particles.push(new Particle());
+        }
+
+        function animateParticles() {
+            pCtx.clearRect(0, 0, particleCanvas.width, particleCanvas.height);
+            for (const p of particles) {
+                p.update();
+                p.draw(pCtx);
+            }
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+
+        // ═══════════════════════════════════════
+        // III. AMBIENT CANVAS (Slow-moving depth lights)
+        // ═══════════════════════════════════════
+        const ambientCanvas = document.getElementById('ambient-canvas');
+        const aCtx = ambientCanvas.getContext('2d');
+        let ambientLights = [];
+
+        function resizeAmbientCanvas() {
+            ambientCanvas.width  = window.innerWidth;
+            ambientCanvas.height = window.innerHeight;
+        }
+        resizeAmbientCanvas();
+        window.addEventListener('resize', resizeAmbientCanvas);
+
+        class AmbientLight {
+            constructor() {
+                this.x = Math.random() * ambientCanvas.width;
+                this.y = Math.random() * ambientCanvas.height;
+                this.radius = Math.random() * 200 + 100;
+                this.speedX = (Math.random() - 0.5) * 0.2;
+                this.speedY = (Math.random() - 0.5) * 0.15;
+                this.opacity = Math.random() * 0.015 + 0.005;
+                this.phase = Math.random() * Math.PI * 2;
+                this.isGold = Math.random() > 0.5;
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                this.phase += 0.003;
+
+                if (this.x < -this.radius) this.x = ambientCanvas.width + this.radius;
+                if (this.x > ambientCanvas.width + this.radius) this.x = -this.radius;
+                if (this.y < -this.radius) this.y = ambientCanvas.height + this.radius;
+                if (this.y > ambientCanvas.height + this.radius) this.y = -this.radius;
+            }
+
+            draw(ctx) {
+                const breathe = Math.sin(this.phase) * 0.3 + 0.7;
+                const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.radius);
+                if (this.isGold) {
+                    gradient.addColorStop(0, `rgba(212, 175, 55, ${this.opacity * breathe})`);
+                } else {
+                    gradient.addColorStop(0, `rgba(16, 80, 50, ${this.opacity * breathe * 2})`);
+                }
+                gradient.addColorStop(1, 'transparent');
+                ctx.fillStyle = gradient;
+                ctx.fillRect(this.x - this.radius, this.y - this.radius, this.radius * 2, this.radius * 2);
+            }
+        }
+
+        for (let i = 0; i < 6; i++) {
+            ambientLights.push(new AmbientLight());
+        }
+
+        function animateAmbient() {
+            aCtx.clearRect(0, 0, ambientCanvas.width, ambientCanvas.height);
+            for (const l of ambientLights) {
+                l.update();
+                l.draw(aCtx);
+            }
+            requestAnimationFrame(animateAmbient);
+        }
+        animateAmbient();
+
+        // ═══════════════════════════════════════
+        // IV. LOADING SEQUENCE
+        // ═══════════════════════════════════════
+        const loadingVeil = document.getElementById('loadingVeil');
+        const loadingBar  = document.getElementById('loadingBar');
+        const mainStage   = document.getElementById('mainStage');
+
+        let loadProgress = 0;
+
+        function simulateLoading() {
+            const interval = setInterval(() => {
+                loadProgress += Math.random() * 15 + 5;
+                if (loadProgress >= 100) {
+                    loadProgress = 100;
+                    loadingBar.style.width = '100%';
+                    clearInterval(interval);
+
+                    setTimeout(() => {
+                        loadingVeil.classList.add('dismissed');
+                        mainStage.classList.add('revealed');
+
+                        // Trigger staggered entrance animations
+                        setTimeout(triggerEntranceSequence, 200);
+                    }, 400);
+                } else {
+                    loadingBar.style.width = loadProgress + '%';
+                }
+            }, 180);
+        }
+
+        // Start loading after fonts are ready (or timeout)
+        if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(() => setTimeout(simulateLoading, 300));
+        } else {
+            setTimeout(simulateLoading, 800);
+        }
+
+        // ═══════════════════════════════════════
+        // V. ENTRANCE ANIMATION SEQUENCER
+        // ═══════════════════════════════════════
+        function triggerEntranceSequence() {
+            const timeline = [
+                { selector: '[data-animate="insignia"]', delay: 0 },
+                { selector: '[data-animate="container"]', delay: 150 },
+                { selector: '[data-animate="lore-header"]', delay: 400 },
+                { selector: '[data-animate="criteria"]', delay: 600 },
+                { selector: '[data-animate="lore-footer"]', delay: 800 },
+                { selector: '[data-animate="form-title"]', delay: 500 },
+                { selector: '[data-animate="field"][data-delay="0"]', delay: 650 },
+                { selector: '[data-animate="field"][data-delay="1"]', delay: 750 },
+                { selector: '[data-animate="field"][data-delay="2"]', delay: 850 },
+                { selector: '[data-animate="field"][data-delay="3"]', delay: 950 },
+                { selector: '[data-animate="upload"]', delay: 1050 },
+                { selector: '[data-animate="consent"]', delay: 1150 },
+                { selector: '[data-animate="submit"]', delay: 1250 },
+                { selector: '[data-animate="watermark"]', delay: 1400 },
+            ];
+
+            timeline.forEach(({ selector, delay }) => {
+                const el = document.querySelector(selector);
+                if (el) {
+                    setTimeout(() => el.classList.add('animate-in'), delay);
+                }
+            });
+
+            // Animate criteria list items individually
+            const criteriaItems = document.querySelectorAll('#criteriaList li');
+            criteriaItems.forEach((li, i) => {
+                setTimeout(() => li.classList.add('animate-in'), 800 + i * 120);
+            });
+        }
+
+        // ═══════════════════════════════════════
+        // VI. SELECT ELEMENT — DATA-EMPTY TRACKING
+        // ═══════════════════════════════════════
+        const selectEl = document.getElementById('subject');
+        selectEl.addEventListener('change', () => {
+            if (selectEl.value) {
+                selectEl.removeAttribute('data-empty');
+            } else {
+                selectEl.setAttribute('data-empty', 'true');
+            }
+        });
+
+        // ═══════════════════════════════════════
+        // VII. FILE UPLOAD SYSTEM
+        // ═══════════════════════════════════════
+        const uploadZone = document.getElementById('uploadZone');
+        const fileInput  = document.getElementById('fileUpload');
+        const fileList   = document.getElementById('fileList');
+        let uploadedFiles = [];
+
+        uploadZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadZone.classList.add('dragover');
+        });
+
+        uploadZone.addEventListener('dragleave', () => {
+            uploadZone.classList.remove('dragover');
+        });
+
+        uploadZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadZone.classList.remove('dragover');
+            handleFiles(e.dataTransfer.files);
+        });
+
+        fileInput.addEventListener('change', () => {
+            handleFiles(fileInput.files);
+            fileInput.value = ''; // Reset
+        });
+
+        function handleFiles(files) {
+            for (const file of files) {
+                if (file.size > 10 * 1024 * 1024) continue; // Skip >10MB
+                if (uploadedFiles.length >= 5) break; // Max 5 files
+                uploadedFiles.push(file);
+            }
+            renderFileList();
+        }
+
+        function renderFileList() {
+            fileList.innerHTML = '';
+            uploadedFiles.forEach((file, index) => {
+                const item = document.createElement('div');
+                item.className = 'file-item';
+                item.innerHTML = `
+                    <span class="file-name">${file.name} <small style="color: var(--ivory-muted); margin-left: 4px;">(${(file.size / 1024).toFixed(0)}KB)</small></span>
+                    <button type="button" class="remove-file" data-index="${index}" aria-label="Remove file">×</button>
+                `;
+                fileList.appendChild(item);
+            });
+        }
+
+        fileList.addEventListener('click', (e) => {
+            const removeBtn = e.target.closest('.remove-file');
+            if (removeBtn) {
+                const index = parseInt(removeBtn.dataset.index, 10);
+                uploadedFiles.splice(index, 1);
+                renderFileList();
+            }
+        });
+
+        // ═══════════════════════════════════════
+        // VIII. FORM VALIDATION & SUBMISSION
+        // ═══════════════════════════════════════
+        const form       = document.getElementById('applicationForm');
+        const submitBtn  = document.getElementById('submitBtn');
+        const successOverlay = document.getElementById('successOverlay');
+        const resetBtn   = document.getElementById('resetBtn');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            // Validate all required fields
+            const name    = document.getElementById('name');
+            const email   = document.getElementById('email');
+            const subject = document.getElementById('subject');
+            const message = document.getElementById('message');
+
+            let isValid = true;
+
+            [name, email, subject, message].forEach((field) => {
+                if (!field.value.trim()) {
+                    isValid = false;
+                    shakField(field.closest('.field-group'));
+                }
+            });
+
+            // Email format check
+            if (email.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+                isValid = false;
+                shakField(email.closest('.field-group'));
+            }
+
+            if (!isValid) return;
+
+            // Submit animation
+            submitBtn.classList.add('loading');
+
+            setTimeout(() => {
+                submitBtn.classList.remove('loading');
+                successOverlay.classList.add('visible');
+
+                // Trigger success particles
+                burstParticles();
+            }, 1800);
+        });
+
+        function shakField(fieldGroup) {
+            fieldGroup.style.animation = 'none';
+            fieldGroup.offsetHeight; // Trigger reflow
+            fieldGroup.style.animation = 'shake 0.5s ease';
+            setTimeout(() => { fieldGroup.style.animation = ''; }, 500);
+        }
+
+        // Add shake keyframes dynamically
+        const shakeStyle = document.createElement('style');
+        shakeStyle.textContent = `
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                15% { transform: translateX(-6px); }
+                30% { transform: translateX(5px); }
+                45% { transform: translateX(-4px); }
+                60% { transform: translateX(3px); }
+                75% { transform: translateX(-2px); }
+                90% { transform: translateX(1px); }
+            }
+        `;
+        document.head.appendChild(shakeStyle);
+
+        // Particle burst on submit success
+        function burstParticles() {
+            const containerRect = document.getElementById('academyContainer').getBoundingClientRect();
+            const centerX = containerRect.left + containerRect.width / 2;
+            const centerY = containerRect.top + containerRect.height / 2;
+
+            for (let i = 0; i < 30; i++) {
+                const p = new Particle();
+                p.x = centerX;
+                p.y = centerY;
+                p.speedX = (Math.random() - 0.5) * 3;
+                p.speedY = (Math.random() - 0.5) * 3;
+                p.size = Math.random() * 2.5 + 0.5;
+                p.opacity = 0.8;
+                p.targetOpacity = 0.8;
+                p.life = 80;
+                p.maxLife = 80;
+                particles.push(p);
+            }
+        }
+
+        // Reset form
+        resetBtn.addEventListener('click', () => {
+            successOverlay.classList.remove('visible');
+            form.reset();
+            uploadedFiles = [];
+            renderFileList();
+            selectEl.setAttribute('data-empty', 'true');
+        });
+
+        // ═══════════════════════════════════════
+        // IX. MAGNETIC HOVER EFFECT ON CONTAINER
+        // ═══════════════════════════════════════
+        const container = document.getElementById('academyContainer');
+
+        container.addEventListener('mousemove', (e) => {
+            const rect = container.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            // Subtle 3D tilt
+            const tiltX = ((y / rect.height) - 0.5) * 1.5;
+            const tiltY = ((x / rect.width) - 0.5) * -1.5;
+            container.style.transform = `perspective(1200px) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+
+            // Dynamic border glow based on mouse position
+            container.style.borderImage = `radial-gradient(
+                300px circle at ${x}px ${y}px,
+                rgba(212, 175, 55, 0.15),
+                rgba(212, 175, 55, 0.03)
+            ) 1`;
+        });
+
+        container.addEventListener('mouseleave', () => {
+            container.style.transform = 'perspective(1200px) rotateX(0) rotateY(0)';
+            container.style.borderImage = 'none';
+            container.style.border = '1px solid var(--glass-border)';
+        });
+
+        // ═══════════════════════════════════════
+        // X. FIELD FOCUS SOUND-LIKE VISUAL PULSE
+        // ═══════════════════════════════════════
+        const allFields = document.querySelectorAll('.portal-form input, .portal-form textarea, .portal-form select');
+
+        allFields.forEach((field) => {
+            field.addEventListener('focus', () => {
+                // Create a subtle pulse ring at the field
+                const group = field.closest('.field-group');
+                const pulse = document.createElement('div');
+                pulse.style.cssText = `
+                    position: absolute;
+                    bottom: 0; left: 50%;
+                    width: 10px; height: 10px;
+                    border: 1px solid rgba(212, 175, 55, 0.3);
+                    border-radius: 50%;
+                    transform: translate(-50%, 50%) scale(1);
+                    pointer-events: none;
+                    z-index: 10;
+                    animation: field-pulse 0.8s ease-out forwards;
+                `;
+                group.appendChild(pulse);
+                setTimeout(() => pulse.remove(), 900);
+            });
+        });
+
+        // Add field pulse keyframes
+        const fieldPulseStyle = document.createElement('style');
+        fieldPulseStyle.textContent = `
+            @keyframes field-pulse {
+                0% { transform: translate(-50%, 50%) scale(1); opacity: 0.6; }
+                100% { transform: translate(-50%, 50%) scale(20); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(fieldPulseStyle);
+
+        // ═══════════════════════════════════════
+        // XI. PARALLAX ON SCROLL
+        // ═══════════════════════════════════════
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            const orbs = document.querySelectorAll('.atmosphere .orb');
+            orbs.forEach((orb, i) => {
+                const speed = 0.02 + i * 0.015;
+                orb.style.transform = `translateY(${scrollY * speed}px)`;
+            });
+        });
+
+        // ═══════════════════════════════════════
+        // XII. WINDOW RESIZE — DEBOUNCED
+        // ═══════════════════════════════════════
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                resizeParticleCanvas();
+                resizeAmbientCanvas();
+            }, 150);
+        });
+
+        // ═══════════════════════════════════════
+        // XIII. KEYBOARD ACCESSIBILITY
+        // ═══════════════════════════════════════
+        // Show native cursor when Tab is pressed
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Tab') {
+                cursorDot.style.opacity  = '0';
+                cursorRing.style.opacity = '0';
+                cursorGlow.style.opacity = '0';
+                document.body.style.cursor = 'auto';
+            }
+        });
+
+        document.addEventListener('mousemove', () => {
+            cursorDot.style.opacity  = '1';
+            cursorRing.style.opacity = '1';
+            cursorGlow.style.opacity = '1';
+            document.body.style.cursor = 'none';
+        }, { once: false });
+
+    })();
+    </script>
+</body>
+</html>
